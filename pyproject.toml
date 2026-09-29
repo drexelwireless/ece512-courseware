@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ece512"
+version = "0.1.0"
+description = "ECE 512 Wireless Communications courseware (Drexel University)"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.10", "matplotlib>=3.7"]
+
+[tool.setuptools]
+packages = ["ece512"]
