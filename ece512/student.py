@@ -10,16 +10,34 @@ import hashlib
 import numpy as np
 
 
-def _rng(student_id, assignment):
+def _check_id(student_id):
+    if student_id is Ellipsis or not str(student_id).strip() or str(student_id).strip() == "...":
+        raise ValueError("Set STUDENT_ID to your Drexel user ID (e.g. 'abc123') first.")
+
+
+def student_seed(student_id, assignment):
+    """Deterministic 64-bit seed for ``student_id`` on ``assignment``."""
+    _check_id(student_id)
     key = f"ece512:{assignment}:{str(student_id).strip().lower()}".encode()
-    seed = int.from_bytes(hashlib.sha256(key).digest()[:8], "big")
-    return np.random.default_rng(seed)
+    return int.from_bytes(hashlib.sha256(key).digest()[:8], "big")
+
+
+def student_rng(student_id, assignment):
+    """NumPy random generator unique to this student and assignment.
+
+    Homework notebooks derive every personal parameter from this generator, and the
+    autograder's hidden tests re-derive them from STUDENT_ID, so results can be checked
+    against the student's own parameters.
+    """
+    return np.random.default_rng(student_seed(student_id, assignment))
+
+
+def _rng(student_id, assignment):
+    return student_rng(student_id, assignment)
 
 
 def student_params(student_id, assignment):
     """Return the parameter dictionary for ``student_id`` on ``assignment``."""
-    if student_id is Ellipsis or not str(student_id).strip() or str(student_id).strip() == "...":
-        raise ValueError("Set STUDENT_ID to your Drexel user ID (e.g. 'abc123') first.")
     rng = _rng(student_id, assignment)
     if assignment == "hw01":
         radius = float(rng.choice([100, 150, 200, 250, 300, 400, 500]))

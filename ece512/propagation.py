@@ -1,7 +1,6 @@
 """Propagation models.
 
-INSTRUCTOR REFERENCE IMPLEMENTATION -- the Friis model is an HW1 solution.
-Released to students only after the HW1 due date (see python/RELEASES.md).
+Public course module (used by the Week 1 lecture notebook and HW1).
 """
 
 import numpy as np

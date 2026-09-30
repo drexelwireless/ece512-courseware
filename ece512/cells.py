@@ -1,7 +1,6 @@
 """Cell clusters, frequency reuse, and serving-cell selection.
 
-INSTRUCTOR REFERENCE IMPLEMENTATION -- contains HW1 solutions.  Released to
-students only after the HW1 due date (see python/RELEASES.md).
+Public course module (used by the Week 1 lecture notebook and HW1).
 
 Geometry (flat-topped hexagons of radius R, see ``hexgrid``):
   hex-lattice basis   a1 = sqrt(3) R e^{j30deg},  a2 = sqrt(3) R e^{j90deg}

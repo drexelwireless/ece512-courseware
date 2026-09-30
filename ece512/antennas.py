@@ -164,6 +164,11 @@ def hpbw(field, theta=None):
     ``field`` is either an array of |F(theta)| sampled on ``theta`` or a callable of
     theta.  The -3 dB crossings (|F|^2 = 1/2 of the peak) on both sides of the main-lobe
     maximum are found by linear interpolation.
+
+    Note: the main lobe must lie inside the sampled range.  If the peak sits at an
+    endpoint of ``theta`` (e.g. boresight at theta = 0 on a [0, pi] grid), only one
+    side is found and the result is half the true beamwidth -- mirror the pattern or
+    sample a symmetric range around the peak.
     """
     if theta is None:
         theta = np.linspace(0, np.pi, 20001)

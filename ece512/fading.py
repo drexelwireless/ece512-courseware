@@ -47,12 +47,11 @@ def clarke_gans(fm_hz, n_samples, fs_hz, rng=None):
     """
     rng = np.random.default_rng(rng)
     f = np.fft.fftfreq(n_samples, d=1 / fs_hz)
-    shape = np.zeros(n_samples)
-    inside = np.abs(f) < fm_hz
-    shape[inside] = 1.0 / np.sqrt(1.0 - (f[inside] / fm_hz) ** 2)
-    # Sharpen the band edges where the spectrum is infinite: clip to the largest finite bin.
-    if not inside.any():
+    inside = np.abs(f) < fm_hz  # strict inequality: the spectrum is infinite at |f| = f_m
+    if inside.sum() < 2:
         raise ValueError("fs_hz / n_samples resolution too coarse for fm_hz")
+    shape = np.zeros(n_samples)
+    shape[inside] = 1.0 / np.sqrt(1.0 - (f[inside] / fm_hz) ** 2)
     g = (rng.standard_normal(n_samples) + 1j * rng.standard_normal(n_samples)) / np.sqrt(2)
     h = np.fft.ifft(g * np.sqrt(shape))
     return h / np.sqrt(np.mean(np.abs(h) ** 2))
