@@ -16,6 +16,15 @@ Dr. Kapil R. Dandekar). Click a badge to open a notebook in Google Colab, then c
 | Week 8 — Diversity and MIMO | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drexelwireless/ece512-courseware/blob/main/notebooks/lectures/week08-diversity.ipynb) |
 | Week 9 — Multiple-Input, Multiple-Output (MIMO) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drexelwireless/ece512-courseware/blob/main/notebooks/lectures/week09-mimo.ipynb) |
 
+## Homework
+
+Open in Colab, set your `STUDENT_ID`, complete the cells marked `...`, run the export cell at
+the end, and upload the downloaded zip file to Canvas.
+
+| Assignment | Open |
+|---|---|
+| ECE 512 Wireless Communications — Homework 1: Cellular Geometry, Frequency Reuse, and Friis | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drexelwireless/ece512-courseware/blob/main/homework/hw01/hw01.ipynb) |
+
 ## Saving your work
 Colab opens a temporary copy. Use **File → Save a copy in Drive** to keep your changes.
 
