@@ -11,3 +11,6 @@ dependencies = ["numpy>=1.24", "scipy>=1.10", "matplotlib>=3.7"]
 
 [tool.setuptools]
 packages = ["ece512"]
+
+[tool.setuptools.package-data]
+ece512 = ["assets/*.png"]
