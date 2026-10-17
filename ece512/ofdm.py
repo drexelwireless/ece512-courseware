@@ -49,7 +49,7 @@ def multipath_channel(x, h):
 
 
 def channel_frequency_response(h, n_fft):
-    """Per-sub-carrier channel gains H_k = FFT_N{h[n]} (unnormalised DFT)."""
+    """Per-sub-carrier channel gains H_k = FFT_N{h[n]} (unnormalized DFT)."""
     if len(h) > n_fft:
         raise ValueError("impulse response longer than the FFT size")
     return np.fft.fft(h, n_fft)

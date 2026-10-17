@@ -98,7 +98,7 @@ def kronecker_channel(R_r, R_t, n=None, rng=None, H_w=None):
     """Kronecker model H = R_r^{1/2} H_w R_t^{1/2} (lecture "Kronecker Model (I)").
 
     ``R_r`` is M_R x M_R, ``R_t`` is M_T x M_T (unit diagonals keep E[|h_ij|^2] = 1).
-    Returns ``n`` realisations shaped ``(n, M_R, M_T)`` (or one matrix if ``n`` is None).
+    Returns ``n`` realizations shaped ``(n, M_R, M_T)`` (or one matrix if ``n`` is None).
     Pass ``H_w`` to reuse a white channel (common random numbers across parameter sweeps).
     """
     R_r, R_t = np.atleast_2d(R_r), np.atleast_2d(R_t)
@@ -321,7 +321,7 @@ def alamouti_transmit(H, s, snr_db, rng=None):
 
 
 def alamouti_combine(H, Y, snr_db):
-    """Linear Alamouti combiner. Returns estimates of (s1, s2) normalised so that
+    """Linear Alamouti combiner. Returns estimates of (s1, s2) normalized so that
     s_hat = s + noise with noise variance 2 / (E_s/N_0 ||H||_F^2) -- full diversity 2 M_R."""
     H = np.asarray(H)
     a = np.sqrt(_lin(snr_db) / 2)

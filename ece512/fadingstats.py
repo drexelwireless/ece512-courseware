@@ -11,7 +11,7 @@ Sections follow the Week 7 deck:
 * Modulation performance in flat fading: P_e = int P_e(gamma) p(gamma) d gamma.
 
 Conventions (as in the lecture): envelope r = |h|, Omega_p = E[r^2] = R_rms^2,
-normalised level rho = R / sqrt(Omega_p), maximum Doppler frequency f_m (Hz),
+normalized level rho = R / sqrt(Omega_p), maximum Doppler frequency f_m (Hz),
 Ricean K = s^2 / (2 sigma^2). Channel *generators* live in :mod:`ece512.fading`.
 """
 
@@ -86,7 +86,7 @@ def afd_rayleigh(rho, fm_hz):
 
 
 def normalized_envelope(h):
-    """Envelope |h| normalised to unit RMS, i.e. rho(t) = r(t) / sqrt(mean(r^2))."""
+    """Envelope |h| normalized to unit RMS, i.e. rho(t) = r(t) / sqrt(mean(r^2))."""
     r = np.abs(np.asarray(h))
     return r / np.sqrt(np.mean(r**2))
 
@@ -103,7 +103,7 @@ def fade_durations(r, level, fs_hz):
     A fade starts with a negative-going crossing and ends with the next
     positive-going crossing; fades cut off by the ends of the record are dropped.
     Crossing instants are linearly interpolated between samples, so fades shorter
-    than a few samples are still measured without a large quantisation bias.
+    than a few samples are still measured without a large quantization bias.
     """
     r = np.asarray(r, dtype=float)
     below = r < level
@@ -198,7 +198,7 @@ def frequency_response(delays_s, gains, f_hz):
 
 
 def frequency_correlation(delays_s, powers, delta_f_hz):
-    """Normalised spaced-frequency correlation |R(Delta f)| of a WSSUS channel with the given PDP.
+    """Normalized spaced-frequency correlation |R(Delta f)| of a WSSUS channel with the given PDP.
 
     R(Delta f) = sum_k P_k exp(-j 2 pi Delta f tau_k) / sum_k P_k (Fourier transform of the PDP).
     """
@@ -225,7 +225,7 @@ def classify_channel(signal_bw_hz, bc_hz, symbol_period_s, tc_s):
 # Modulation performance in flat fading
 # ---------------------------------------------------------------------------
 
-# Nearest-neighbour Gray-coded approximations P_b(gamma_b) ~ a Q(sqrt(b gamma_b)).
+# Nearest-neighbor Gray-coded approximations P_b(gamma_b) ~ a Q(sqrt(b gamma_b)).
 _QFORM = {
     "bpsk": (1.0, 2.0),
     "qpsk": (1.0, 2.0),
@@ -246,7 +246,7 @@ def _q_coefficients(scheme):
 def ber_awgn(ebno_db, scheme="bpsk"):
     """Bit error rate in AWGN vs E_b/N_0 (dB): P_b = a Q(sqrt(b E_b/N_0)).
 
-    Exact for BPSK/QPSK; nearest-neighbour approximation for square M-QAM
+    Exact for BPSK/QPSK; nearest-neighbor approximation for square M-QAM
     (a = 4/k (1 - 1/sqrt(M)), b = 3k/(M-1), k = log2 M).
     """
     a, b = _q_coefficients(scheme)

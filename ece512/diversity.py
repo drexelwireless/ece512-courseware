@@ -87,7 +87,7 @@ def wideband_sos(fm_hz, t, freqs_hz, sigma_tau_s, n_paths=128, rng=None):
 
 
 def polarization_branches(fm_hz, t, rho, xpd_db=0.0, rng=None):
-    """Two co-located, differently polarised branches (e.g. V and H).
+    """Two co-located, differently polarized branches (e.g. V and H).
 
     Branch 2 = rho * branch1 + sqrt(1 - rho^2) * independent fading, then scaled
     by the cross-polar discrimination XPD (mean power of branch 2 is 10^(-XPD/10)).
@@ -101,7 +101,7 @@ def polarization_branches(fm_hz, t, rho, xpd_db=0.0, rng=None):
 
 
 def branch_snrs(n, m, gamma_mean, rng=None):
-    """``n`` realisations of ``m`` i.i.d. Rayleigh branch SNRs gamma_i (exponential,
+    """``n`` realizations of ``m`` i.i.d. Rayleigh branch SNRs gamma_i (exponential,
     mean Gamma). Returns shape (n, m)."""
     rng = np.random.default_rng(rng)
     return rng.exponential(gamma_mean, size=(n, m))

@@ -67,7 +67,7 @@ def multipath_impulse_response(delays_s, powers_db, fs_hz, rng=None):
     """Random tapped-delay-line channel sampled at ``fs_hz``.
 
     Each path gets an independent CN(0, p_k) gain; returns the discrete impulse
-    response (length covers the largest delay) normalised to unit total mean power.
+    response (length covers the largest delay) normalized to unit total mean power.
     """
     rng = np.random.default_rng(rng)
     delays = np.asarray(delays_s, dtype=float)

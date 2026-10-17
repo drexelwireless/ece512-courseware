@@ -167,7 +167,7 @@ def clarke_autocorrelation(tau_s, fm_hz, omega_p=1.0):
 
 
 def empirical_autocorrelation(h, max_lag):
-    """Normalised sample autocorrelation R[k] = mean(h[n] h*[n+k]) / mean(|h|^2), k = 0..max_lag."""
+    """Normalized sample autocorrelation R[k] = mean(h[n] h*[n+k]) / mean(|h|^2), k = 0..max_lag."""
     h = np.asarray(h)
     n = len(h)
     r = np.array([np.vdot(h[: n - k], h[k:]) / (n - k) for k in range(max_lag + 1)])
