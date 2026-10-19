@@ -179,8 +179,13 @@ def coherence_bandwidth(sigma_tau_s, correlation=0.5):
 def coherence_time(fm_hz, definition="geometric"):
     """Coherence time T_c ~ 1 / f_m (Rappaport Sec. 5.4.3).
 
-    ``"0.5"``: T_c = 9 / (16 pi f_m) (time correlation above 0.5);
-    ``"geometric"``: geometric mean of that and 1/f_m, T_c = 0.423 / f_m (popular rule of thumb).
+    ``"0.5"``: T_c = 9 / (16 pi f_m) = 0.179 / f_m, where the *envelope* correlation J0^2 falls to 0.5
+    (J0 ~ 0.71); the complex-gain correlation J0 itself reaches 0.5 later, at 0.242 / f_m.
+    ``"geometric"``: geometric mean of that and 1/f_m, T_c = 0.423 / f_m (popular rule of thumb). It lies
+    just past the first zero of J0 (0.383 / f_m), so the channel is essentially decorrelated there, not
+    strongly correlated.
+    Molisch (2nd ed. Sec. 6.5.4) defines T_c by a correlation threshold, analogous to B_c, and relates it
+    by an uncertainty relation to the inverse of the rms Doppler spread.
     """
     fm = np.asarray(fm_hz, dtype=float)
     if definition == "0.5":
